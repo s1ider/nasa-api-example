@@ -61,7 +61,7 @@ class TestNasaApiPhotos(unittest.TestCase):
         photos_by_camera = {camera: len(self._get_all_photos(1000, camera)) for camera in curiosity_cameras}
 
         self.assertTrue(all(
-            [a / b > 10 or b / 10 > 10
+            [a / b > 10 or b / a > 10
              for a, b in itertools.combinations(photos_by_camera.values(), 2) # get unique pairs of numbers of photos
              if a > 0 and b > 0]
             ), msg=photos_by_camera)
